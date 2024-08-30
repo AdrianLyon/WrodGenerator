@@ -23,7 +23,7 @@ class DocumentModel:
             return False, errors
 
         # Extraer datos desde el diccionario 'data'
-        first_name = data.get('FirstNames', '')
+        first_name = data.get('name', '')
         last_name = data.get('LastNames', '')
         age = data.get('Age', '')
         day = data.get('Day', '')
@@ -44,7 +44,7 @@ class DocumentModel:
 
     def validate_data(self, data):
         errors = []
-        if not data.get('FirstNames'):
+        if not data.get('name'):
             errors.append("First Names cannot be empty.")
         if not data.get('LastNames'):
             errors.append("Last Names cannot be empty.")
@@ -68,7 +68,7 @@ class DocumentModel:
         for index, row in df.iterrows():
             document = Document(self.file_path)
             data = {
-                'FirstNames': str(row['FirstNames']),
+                'FirstNames': str(row['name']),
                 'LastNames': str(row['LastNames']),
                 'Age': str(row['Age']),
                 'Day': str(row['Day']),
